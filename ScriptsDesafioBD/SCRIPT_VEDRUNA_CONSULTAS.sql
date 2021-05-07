@@ -34,7 +34,7 @@ SELECT * FROM fpdual.teachers WHERE NOT idTeacher=1;
  SELECT name FROM highschool WHERE city LIKE "Sevilla";
  
 -- Sacar el número de alumnos con un COUNT()
- SELECT COUNT(idStudents) FROM students;
+ SELECT COUNT(idStudent) FROM students;
  
 -- Comprobar la media de las notas por el ID de los alumnos.
  SELECT idStudent, AVG(score) FROM class GROUP BY idStudent;
