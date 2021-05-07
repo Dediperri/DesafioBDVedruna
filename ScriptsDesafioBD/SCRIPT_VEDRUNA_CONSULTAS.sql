@@ -43,7 +43,7 @@ SELECT * FROM fpdual.teachers WHERE NOT idTeacher=1;
  SELECT idStudent, idSubjects, score FROM class WHERE score BETWEEN 6 AND 8;
 
 
--- Primer INNER JOIN
+-- Primer INNER JOIN, junta varias tablas para conseguir toda la información sobre el estudiante, profesor, asignatura y notas
 SELECT sub.idSubjects, sub.name, sub.idTeacher, te.firtsName,
 te.lastName AS NOMBRE_FORMADOR, cl.idStudent, st.firstName AS NOMBRE_ESTUDIANTE,
 cl.score AS NOTAS FROM subjects sub
@@ -51,11 +51,11 @@ INNER JOIN class cl ON sub.idSubjects = cl.idSubjects
 INNER JOIN teachers te ON sub.idTeacher = te.idTeacher
 INNER JOIN students st ON cl.idStudent = st.idStudent;
 
--- Primer LEFT JOIN
+-- Primer LEFT JOIN, comprueba los profesores que no imparten ninguna asignatura
 SELECT te.FirtsName FROM teachers te LEFT JOIN subjects su ON te.idTeacher = su.idTeacher
 WHERE su.idTeacher IS NULL;
 
--- Primer RIGHT JOIN
+-- Primer RIGHT JOIN, comprueba las asignaturas que no tienen asignado ningun profesor
 SELECT su.idSubjects, su.name FROM teachers te RIGHT JOIN subjects su ON te.idTeacher = su.idTeacher
 WHERE te.idTeacher IS NULL;
 
